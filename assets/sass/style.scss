@@ -1,0 +1,30 @@
+// Basic Vendors
+@import "vendor/reset.scss";
+@import "vendor/animate.3.5.2.scss";
+@import "vendor/grid";
+
+// Modules
+@import "modules/mixins";
+@import "modules/extensions";
+@import "modules/functions";
+
+// Typography
+@import "typography/colors";
+@import "typography/fonts";
+@import "typography/headings";
+
+// Page setting
+@import "partials/body-settings";
+
+// Components
+@import "components/errors";
+@import "components/header";
+@import "components/sidebar";
+@import "components/inputs";
+@import "components/links";
+@import "components/overlay";
+@import "components/rating";
+@import "components/person-details";
+
+// Customs
+@import "partials/generals";

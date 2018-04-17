@@ -1,0 +1,104 @@
+// Typography
+
+
+// Fonts
+$font-path: '../../assets/font/';
+
+@font-face {
+    font-family: 'Avenir Next Regular';
+    src: url('#{$font-path}avenir-next-regular.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}avenir-next-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}AvenirNextLTPro-Regular.otf') format('woff2'), /* Super Modern Browsers */
+        // url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        url('#{$font-path}avenir-next-regular.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}avenir-next-regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+        // url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Avenir Next Bold';
+    src: url('#{$font-path}avenir-next-bold.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}avenir-next-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}AvenirNextLTPro-Bold.otf') format('woff2'), /* Super Modern Browsers */
+        url('#{$font-path}avenir-next-bold.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}avenir-next-bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Avenir Next Thin';
+    src: url('#{$font-path}avenir-next-thin.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}avenir-next-thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}avenir-next-thin.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}avenir-next-thin.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Avenir Next Italic';
+    src: url('#{$font-path}avenir-next-italic.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}avenir-next-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}AvenirNextLTPro-It.otf') format('woff2'), /* Super Modern Browsers */
+        url('#{$font-path}avenir-next-italic.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}avenir-next-italic.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+
+// Font extensions
+%base-font {
+    font-family: 'Avenir Next Regular', Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+%text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+$base-number: 16;
+$base-font-size: 17px;
+$base-line-height: 1;
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 800;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: 1.2;
+
+// Typography classes
+.italic {
+    font-family: 'Avenir Next Italic';
+}
+
+.thin {
+    font-family: 'Avenir Next Thin';
+}
+
+.bold {
+    font-family: 'Avenir Next Bold';
+}
+
+.highlight {
+    color: $pink;
+}
+
+.strikethrough {
+    color: $grey9B;
+    text-decoration: line-through;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.wrap {
+    white-space: initial;
+}
+
+.wordBreak {
+    word-break: break-all;
+}

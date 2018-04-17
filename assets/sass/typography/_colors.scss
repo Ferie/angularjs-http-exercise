@@ -1,0 +1,73 @@
+// Colors
+
+$white: #FFF;
+$whiteF8: #F8F8F8;
+$black: #000;
+$off-black: #232129;
+$yellow: #FFC326;
+$darker-yellow: #ECB20A;
+$lightBlue: #008ab4;
+$pink: #FF005B;
+$purple: #767491;
+$darkPurple: #8F8EA5;
+$grey9B: #9B9B9B;
+$greyAA: #AAAAAA;
+$greyBC: #BCBCBC;
+$greyDD: #DDDDDD;
+$greyD8: #D8D8D8;
+$greyEE: #EEEEEE;
+
+$transparent: rgba(0,0,0,0);
+$insetShadow: rgba(0, 0, 0, 0.1);
+
+.white {
+    color: $white;
+}
+
+.whiteF8 {
+    color: $whiteF8;
+}
+
+.black {
+    color: $black;
+}
+
+.off-black {
+    color: $off-black;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.darker-yellow {
+    color: $darker-yellow;
+}
+
+.pink {
+    color: $pink;
+}
+
+.purple {
+    color: $purple;
+}
+
+.darkPurple {
+    color: $darkPurple;
+}
+
+.grey9B {
+    color: $grey9B;
+}
+
+.greyBC {
+    color: $greyBC;
+}
+
+.greyD8 {
+    color: $greyD8;
+}
+
+.greyEE {
+    color: $greyEE;
+}

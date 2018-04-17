@@ -1,0 +1,73 @@
+// Body Settings
+
+// Body custom variables
+$line-height: 1.4;
+$border-radius: rem(4);
+$background-color: $whiteF8;
+$android-box-shadow-bottom: 0 rem(2) rem(4) rgba(0, 0, 0, 0.05);
+$android-box-shadow-top: 0 rem(-2) rem(4) rgba(0, 0, 0, 0.05);
+$android-box-shadow-left: rem(2) 0 rem(4) rgba(0, 0, 0, 0.05);
+$android-box-shadow-right: rem(-2) 0 rem(4) rgba(0, 0, 0, 0.05);
+
+// Body custom classes
+body {
+    @extend %base-font;
+    background-color: $background-color; // TO DO: delete this line when there will be the background images
+    min-height: 100%;
+    font-size: $base-font-size;
+    line-height: $line-height;
+    -webkit-text-size-adjust: 100%; // Disable Safari resizes text on orientation change
+}
+
+.container {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    max-width: rem(1600);
+}
+
+.wrapper {
+    position: relative;
+    margin: rem(112) 0 0;
+}
+
+.riccardo {
+    position: relative;
+}
+
+.pageTitle {
+    position: absolute;
+    top: em(-9000);
+    left: em(-9000);
+}
+
+.pageLeftColumn,
+.pageRightColumn {
+    @extend %grid__item;
+    @extend %one-whole;
+    @extend %small-outwards--one-half;
+}
+
+@include grid-media-query("xsmall") {
+    .wrapper {
+        position: relative;
+        margin: rem(112) rem(16) 0;
+    }
+}
+
+@include grid-media-query("xsmall-outwards") {
+    body {
+        background-image: url('/assets/images/background.jpg');
+        background-attachment: fixed;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+    
+@include grid-media-query("small-outwards") {
+    .wrapper {
+        position: relative;
+        margin: rem(112) rem(32) 0 rem(232);
+    }
+}
