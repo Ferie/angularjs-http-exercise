@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lte IE 8]>
+    <html class="lt-ie8" ng-app="riccardo">
+<![endif]-->
+<!--[if IE 8]>
+    <html class="ie8" ng-app="riccardo">
+<![endif]-->
+<!--[if IE 9]>
+    <html class="ie9" ng-app="riccardo">
+<![endif]-->
+<!--[if gt IE 9]>
+    <!-->
+<html ng-app="riccardo">
+    <!--
+<![endif]-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title ng-bind="$state.current.data.pageTitle">Riccardo Exercise</title>
+        <base href="/">
+        <link type="text/css" rel="stylesheet" href="dist/css/riccardo.css">
+    </head>
+
+    <body>
+        <!--[if lte IE 7]>
+            <p class="browsehappy">
+                You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.
+            </p>
+        <![endif]-->
+
+        <!--<div ui-view="header"></div>-->
+        <riccardo-header></riccardo-header>
+
+        <!-- <div ui-view="sidebar"></div> -->
+        <riccardo-sidebar></riccardo-sidebar>
+
+        <main class="container">
+            <div class="wrapper">
+                <!--<div ui-view="content"></div>-->
+                <div ui-view="detailsContent"></div>
+            </div>
+        </main>
+
+        <!-- <div ui-view="footer"></div> -->
+
+        <div class="overlay" ng-show="overlay"></div>
+
+        <script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.6.9/angular-sanitize.min.js"></script>
+        <script src="https://unpkg.com/@uirouter/angularjs@1.0.14/release/angular-ui-router.min.js"></script>
+        <!-- Load Riccardo application -->
+        <script src="dist/js/riccardo.js"></script>
+    </body>
+</html>
