@@ -1,0 +1,43 @@
+<a
+    class="link hamburgerMenu"
+    title="Riccardo Menu"
+    ng-click="$ctrl.open = true"
+></a>
+
+<aside ng-class="{ 'sidebar': true, 'open': $ctrl.open, 'close': !$ctrl.open }">
+    <div class="transparentOverlay" ng-click="$ctrl.open = false"></div>
+    <a aria-label="Dismiss" class="closeSidebar" ng-click="$ctrl.open = false"></a>
+
+    <div class="sidebarScroller">
+        <div class="sidebarLogoContainer">
+            <a ui-sref="riccardo-exercise">
+                <img class="logo" src="assets/images/riccardo-logo.png" alt="Riccardo Logo">
+            </a>
+        </div>
+
+        <div class="sidebarActionContainer">
+            Search: <input type="text" ng-model="$ctrl.search" />
+        </div>
+
+        <div class="sidebarActionContainer">
+            Sort by:
+            <select ng-model="$ctrl.order">
+                <option value="name">Alphabetical</option>
+                <option value="rating">Rating</option>
+            </select>
+        </div>
+
+        <div
+            ng-repeat="person in $ctrl.people | filter: $ctrl.search | orderBy: $ctrl.order"
+            class="sidebarElement"
+        >
+            <a
+                class="sidebarMenuItem link"
+                ui-sref="person-details({ id: person.id, name: person.name, person: person })"
+                ui-sref-active="active"
+            >
+                <span class="sidebarMenuItemLabel">{{ person.name }}</span>
+            </a>
+        </div>
+    </div>
+</aside>
