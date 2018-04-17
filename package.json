@@ -1,0 +1,47 @@
+{
+    "name": "angular-http-exercise",
+    "version": "1.0.0",
+    "description": "Angular Portal Exercise",
+    "homepage": "http://www.riccardoandreatta.com/",
+    "main": "index.html",
+    "scripts": {
+        "start": "node server"
+    },
+    "author": {
+        "name": "Riccardo Andreatta"
+    },
+    "license": {
+        "name": "MIT",
+        "link": "http://opensource.org/licenses/MIT"
+    },
+    "dependencies": {
+        "del": "^2.2.2",
+        "dotenv": "^4.0.0",
+        "express": "^4.15.2",
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-cssmin": "^0.2.0",
+        "gulp-header": "^1.8.8",
+        "gulp-sass": "^3.1.0",
+        "gulp-uglify": "^2.1.2"
+    },
+    "devDependencies": {
+        "connect-modrewrite": "^0.10.1",
+        "gulp-connect": "^5.0.0",
+        "gulp-csslint": "^1.0.0",
+        "gulp-htmlhint": "^0.3.1",
+        "gulp-jsdoc3": "^1.0.1",
+        "gulp-jshint": "^2.0.4",
+        "gulp-ng-config": "^1.4.0",
+        "gulp-ngdocs": "^0.3.0",
+        "gulp-nsp": "^2.4.2",
+        "gulp-sourcemaps": "^2.4.1",
+        "htmlhint-stylish": "^1.0.3",
+        "jasmine": "^2.6.0",
+        "jshint": "^2.9.4",
+        "jshint-stylish": "^2.2.1",
+        "jsonapi-datastore": "^0.4.0-beta",
+        "jsonfile": "^3.0.0 ",
+        "karma": "^1.7.0"
+    }
+}
