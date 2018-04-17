@@ -1,0 +1,88 @@
+// Person Details
+
+.personDetailsContainer {
+    background-color: $whiteF8;
+}
+
+.personDetails {
+    @include box-shadow-defined($android-box-shadow-bottom);
+    background-color: $white;
+    border-radius: $border-radius;
+    padding: rem(16);
+
+    > .heading2 {
+        margin-bottom: rem(20);
+    }
+}
+
+.personName {
+    &.heading2 {
+        font-size: rem(30);
+    }
+}
+
+.personImageContainer,
+.personDescriptionContainer {
+    @extend %grid__item;
+}
+
+.personImageContainer {
+    @extend %one-whole;
+    @extend %xsmall-outwards--one-half;
+    @extend %medium--one-quarter;
+    @extend %large-outwards--one-sixth;
+    padding: rem(10) 0;
+    text-align: center;
+}
+
+.personImage {
+    background-color: $greyEE;
+    border-radius: 50%;
+    min-height: rem(64);
+    width: 100%;
+}
+
+.personDescriptionContainer {
+    @extend %one-whole;
+    @extend %xsmall-outwards--one-half;
+    @extend %medium--three-quarters;
+    @extend %large-outwards--five-sixths;
+    padding: rem(10) 0;
+}
+
+.preferences {
+    > .pageLeftColumn,
+    > .pageRightColumn {
+        @extend %xsmall-outwards--one-half;
+        margin: rem(16) 0;
+    }
+}
+
+@include grid-media-query("xsmall-outwards") {
+    .personImageContainer {
+        padding: rem(10) rem(20) rem(10) 0;
+    }
+
+    .preferences {
+        > .pageLeftColumn,
+        > .pageRightColumn {
+            margin: 0;
+        }
+
+        > .pageLeftColumn {
+            padding-right: rem(20);
+        }
+    }
+}
+
+@include grid-media-query("medium-outwards") {
+    .personName {
+        &.heading2 {
+            font-size: rem(22);
+        }
+    }
+
+    .personDetails {
+        padding: rem(32);
+    }
+}

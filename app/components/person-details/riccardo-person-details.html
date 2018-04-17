@@ -1,0 +1,40 @@
+<section class="personDetailsContainer">
+    <div class="personDetails clearfix">
+        <h2 class="personName heading2">{{ $ctrl.person.name }}</h2>
+
+        <div class="clearfix">
+            <div class="personImageContainer">
+                <img class="personImage" ng-src="{{ $ctrl.person.img }}" alt="{{ $ctrl.person.name }}">
+            </div>
+
+            <div class="personDescriptionContainer">
+                {{ $ctrl.person.Description }}
+
+                <div class="personRatingContainer">
+                    <h3 class="heading4">Rating</h3>
+                    <div star-rating ng-model="$ctrl.person.rating" max="5" readonly="true"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="preferences clearfix">
+            <div class="pageLeftColumn">
+                <h3 class="heading4">Likes</h3>
+                <ul>
+                    <li ng-repeat="like in $ctrl.person.Likes">
+                        {{ like }}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pageRightColumn">
+                <h3 class="heading4">Dislikes</h3>
+                <ul>
+                    <li ng-repeat="dislike in $ctrl.person.Dislikes">
+                        {{ dislike }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
