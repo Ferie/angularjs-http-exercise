@@ -1,0 +1,111 @@
+// Sidebar
+
+.sidebar {
+    @include box-shadow-defined($android-box-shadow-left);
+    @include transition(cubic-bezier(.65,.41,.63,.93), 150ms, width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: $white;
+    text-align: center;
+    width: rem(200);
+    z-index: 10;
+}
+
+.sidebarScroller {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.sidebarLogoContainer {
+    padding: rem(48) rem(16) rem(16);
+    width: rem(168);
+}
+
+.sidebarActionContainer {
+    padding: rem(16);
+    width: rem(168);
+}
+
+.logo {
+    margin: 0 auto;
+    width: rem(168);
+}
+
+.sidebarElement {
+    > .sidebarMenuItem {
+        display: table;
+        border-left: rem(4) solid $transparent;
+        cursor: pointer;
+        text-align: left;
+        height: rem(80);
+        width: 100%;
+
+        &.active {
+            border-left: rem(4) solid $yellow;
+        }
+
+        > .sidebarMenuItemLabel {
+            display: table-cell;
+            /*color: $darkPurple;*/
+            padding-left: rem(16);
+            vertical-align: middle;
+        }
+    }
+}
+
+@include grid-media-query("small-inwards") {
+    .hamburgerMenu {
+        @include svg-icons(hamburger_menu);
+        position: fixed;
+        top: 0;
+        left: rem(16);
+        background-size: rem(40);
+        background-position-y: center;
+        margin: 0;
+        height: rem(80);
+        min-width: rem(40);
+        z-index: 9;
+    }
+
+    .sidebar {
+        &.open {
+            display: block;
+            animation: 600ms slideInLeft;
+            width: rem(200);
+
+            .transparentOverlay {
+                position: fixed;
+                top: 0;
+                left: rem(200);
+                right: 0;
+                bottom: 0;
+                background-color: $transparent;
+                z-index: 11;
+            }
+        }
+
+        &.close {
+            animation: 400ms slideOutLeft;
+            width: 0;
+        }
+
+        .closeSidebar {
+            @include svg-icons(cross_black);
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-position: center;
+            cursor: pointer;
+            padding: rem(32);
+        }
+    }
+}
+
+@include grid-media-query("small-outwards") {
+    .sidebar {
+        display: block;
+    }
+}
