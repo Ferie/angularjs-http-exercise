@@ -1,0 +1,74 @@
+$breakpoints:(
+    'default' '(max-width: 568px)',
+    'xsmall' '(min-width: 480px) and (max-width: 568px)',
+    'xsmall-outwards' '(min-width: 480px)',
+    'xsmall-inwards' '(max-width: 479px)',
+    'small' '(min-width: 569px) and (max-width: 768px)',
+    'small-outwards' '(min-width:569px)',
+    'small-inwards' '(max-width:568px)',
+    'medium' '(min-width: 769px) and (max-width: 1024px)',
+    'medium-outwards' '(min-width:769px)',
+    'medium-inwards' '(max-width:768px)',
+    'large' '(min-width: 1025px) and (max-width: 1200px)',
+    'large-outwards' '(min-width:1025px)',
+    'large-inwards' '(max-width:1024px)',
+    'xlarge' '(min-width: 1201px) and (max-width: 2000px)',
+    'xlarge-outwards' '(min-width:1201px)',
+    'xlarge-inwards' '(max-width:1200px)'
+);
+
+$breakpoint-has-widths: (
+    'default',
+    'xsmall',
+    'xsmall-outwards',
+    'xsmall-inwards',
+    'small',
+    'small-outwards',
+    'small-inwards',
+    'medium',
+    'medium-outwards',
+    'large',
+    'large-outwards',
+    'large-inwards',
+    'xlarge',
+    'xlarge-outwards',
+    'xlarge-inwards'
+);
+
+$breakpoint-has-push: (
+    'default',
+    'xsmall',
+    'xsmall-outwards',
+    'xsmall-inwards',
+    'small',
+    'small-outwards',
+    'small-inwards',
+    'medium',
+    'medium-outwards',
+    'large',
+    'large-outwards',
+    'large-inwards',
+    'xlarge',
+    'xlarge-outwards',
+    'xlarge-inwards'
+);
+
+$breakpoint-has-pull: (
+    'default',
+    'xsmall',
+    'xsmall-outwards',
+    'xsmall-inwards',
+    'small',
+    'small-outwards',
+    'small-inwards',
+    'medium',
+    'medium-outwards',
+    'large',
+    'large-outwards',
+    'large-inwards',
+    'xlarge',
+    'xlarge-outwards',
+    'xlarge-inwards'
+);
+
+$gutter: 0;

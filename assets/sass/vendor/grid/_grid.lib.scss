@@ -1,0 +1,614 @@
+///------------------------------------*\
+//  $CSSWIZARDRY-GRIDS
+//*------------------------------------*/
+//**
+// * CONTENTS
+// * INTRODUCTION.........How the grid system works.
+// * VARIABLES............Your settings.
+// * MIXINS...............Library mixins.
+// * GRID SETUP...........Build the grid structure.
+// * WIDTHS...............Build our responsive widths around our breakpoints.
+// * PUSH.................Push classes.
+// * PULL.................Pull classes.
+// */
+
+
+
+///*------------------------------------*\
+//    $INTRODUCTION
+//\*------------------------------------*/
+//**
+// * csswizardry grids provides you with widths to suit a number of breakpoints
+// * designed around devices of a size you specify. Out of the box, csswizardry
+// * grids caters to the following types of device:
+// *
+// * palm     --  palm-based devices, like phones and small tablets
+// * lap      --  lap-based devices, like iPads or laptops
+// * portable --  all of the above
+// * desk     --  stationary devices, like desktop computers
+// * regular  --  any/all types of device
+// *
+// * These namespaces are then used in the library to give you the ability to
+// * manipulate your layouts based around them, for example:
+// *
+//   <div class="grid__item  one-whole  lap--one-half  desk--one-third">
+// *
+// * This would give you a grid item which is 100% width unless it is on a lap
+// * device, at which point it become 50% wide, or it is on a desktop device, at
+// * which point it becomes 33.333% width.
+// *
+// * csswizardry grids also has push and pull classes which allow you to nudge
+// * grid items left and right by a defined amount. These follow the same naming
+// * convention as above, but are prepended by either `push--` or `pull--`, for
+// * example:
+// *
+//   `class="grid__item  one-half  push--one-half"`
+// *
+// * This would give you a grid item which is 50% width and pushed over to the
+// * right by 50%.
+// *
+// * All classes in csswizardry grids follow this patten, so you should fairly
+// * quickly be able to piece together any combinations you can imagine, for
+// * example:
+// *
+//   `class="grid__item  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
+// *
+//   `class="grid__item  one-quarter  palm--one-half  push--palm--one-half"`
+// *
+//   `class="grid__item  palm--one-third  desk--five-twelfths"`
+// */
+
+
+
+//*------------------------------------*\
+//    $VARIABLES
+//\*------------------------------------*/
+///**
+// * If you are building a non-responsive site but would still like to use
+// * csswizardry-grids, set this to ‘false’:
+// */
+$responsive:            true !default;
+
+///**
+// * Is this build mobile first? Setting to ‘true’ means that all grids will be
+// * 100% width if you do not apply a more specific class to them.
+// */
+$mobile-first:          true !default;
+
+///**
+// * Generates additional css which deal with IE7.
+// * Features can be seperately disabled
+// */
+$ie-support:            false !default;
+
+///**
+// * Add the IE specific "behavior" polyfill for box-sizing support
+// * Bug details: http://www.stubbornella.org/content/2009/07/23/overflow-a-secret-benefit/
+// */
+$ie-box-sizing:         true !default;
+$ie-box-sizing-htc-path: "/resources/scripts/libraries/boxsizing.htc"!default;
+
+///**
+// * Add IE7 specific overwrites for percentages calculations
+// * Bug details: http://www.stubbornella.org/content/2009/07/23/overflow-a-secret-benefit/
+// */
+$ie-percentages:        true !default;
+$ie-percentage-delta:   0.1% !default;
+
+///**
+// * Set the spacing between your grid items.
+// */
+$gutter:                16px !default;
+
+///**
+// * Would you like Sass’ silent classes, or regular CSS classes?
+// */
+$use-silent-classes:    true !default;
+
+///**
+// * Would you like push and pull classes enabled?
+// */
+$push:                  false !default;
+$pull:                  false !default;
+
+///**
+// * Using `inline-block` means that the grid items need their whitespace removing
+// * in order for them to work correctly. Set the following to true if you are
+// * going to achieve this by manually removing/commenting out any whitespace in
+// * your HTML yourself.
+// *
+// * Setting $use-markup-fix to false invokes a hack which cannot always be guaranteed,
+// * please see the following for more detail:
+// *
+// * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+// * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+// */
+$use-markup-fix:        true !default;
+
+///**
+// * You can convert the grid to a float based system, by setting $use-floats to true,
+// * but align features will be disabled ($grid-rev, $grid-right, $grid-center)
+// */
+$use-floats:            true !default;
+
+///**
+// * Define your breakpoints. The first value is the prefix that shall be used for
+// * your classes (e.g. `.palm--one-half`), the second value is the media query
+// * that the breakpoint fires at.
+// */
+$breakpoints: (
+    'palm' '(max-width: 480px)',
+    'lap' '(min-width: 481px) and (max-width: 1023px)',
+    'portable' '(max-width: 1023px)',
+    'desk' '(min-width: 1024px)'
+)!default;
+
+///**
+// * Define which namespaced breakpoints you would like to generate for each of
+// * widths, push and pull. This is handy if you only need pull on, say, desk, or
+// * you only need a new width breakpoint at mobile sizes. It allows you to only
+// * compile as much CSS as you need. All are turned on by default, but you can
+// * add and remove breakpoints at will.
+// *
+// * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+// * have been set to ‘true’.
+// */
+$breakpoint-has-widths: ('palm','lap','portable','desk') !default;
+$breakpoint-has-push:   ('palm','lap','portable','desk') !default;
+$breakpoint-has-pull:   ('palm','lap','portable','desk') !default;
+
+
+///**
+// * You do not need to edit anything from this line onward; csswizardry-grids is
+// * good to go. Happy griddin’!
+// */
+$class-type:            unquote(".");
+
+@if $use-silent-classes == true {
+    $class-type:        unquote("%") !global;
+}
+
+
+
+///*------------------------------------*\
+//    $MIXINS
+//\*------------------------------------*/
+///**
+// * These mixins are for the library to use only, you should not need to modify
+// * them at all.
+// *
+// * Enclose a block of code with a media query as named in `$breakpoints`.
+// */
+
+@mixin grid-media-query($media-query) {
+    $breakpoint-found: false;
+
+    @each $breakpoint in $breakpoints {
+        $name: nth($breakpoint, 1);
+        $declaration: nth($breakpoint, 2);
+
+        @if $media-query == $name and $declaration {
+            $breakpoint-found: true;
+
+            @media only screen and #{$declaration} {
+                @content;
+            }
+        }
+    }
+
+    @if $breakpoint-found == false {
+        @warn "Breakpoint ‘#{$media-query}’ does not exist";
+    }
+}
+
+///**
+// * Drop relative positioning into silent classes which can’t take advantage of
+// * the `[class*="push--"]` and `[class*="pull--"]` selectors.
+// */
+@mixin silent-relative() {
+    @if $use-silent-classes == true {
+        position: relative;
+    }
+}
+
+
+
+///*------------------------------------*\
+//    $GRID SETUP
+//\*------------------------------------*/
+///**
+// * 1. Allow the grid system to be used on lists.
+// * 2. Remove any margins and paddings that might affect the grid system.
+// * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+// */
+#{$class-type}grid {
+    list-style: none;               //* [1] *//
+    margin: 0;                      //* [2] *//
+    padding: 0;                     //* [2] *//
+    margin-left: -$gutter;          //* [3] *//
+
+    @if $use-markup-fix != true {
+        letter-spacing: -0.31em;
+    }
+
+    @if $use-floats == true {
+        // Micro clear statement
+        &:before,
+            &:after {
+            content: " ";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        @if $ie-support {
+            & {
+                *zoom: 1;
+            }
+        }
+    }
+}
+
+@if not $use-markup-fix {
+    /* Opera hack */
+    .opera:-o-prefocus,
+    #{$class-type}grid {
+        word-spacing: -0.43em;
+    }
+}
+
+///**
+// * 1. Cause columns to stack side-by-side.
+// * 2. Space columns apart.
+// * 3. Align columns to the tops of each other.
+// * 4. Full-width unless told to behave otherwise.
+// * 5. Required to combine fluid widths and fixed gutters.
+// */
+#{$class-type}grid__item {
+    @if $use-floats == true {
+        display: block;             //* [1] *//
+        float: left;                //* [1] *//
+    } @else {
+        display: inline-block;      //* [1] *//
+    }
+
+    @if $ie-support {
+        *display: inline;
+        *zoom: 1;
+    }
+
+    padding-left: $gutter;          //* [2] *//
+    vertical-align: top;            //* [3] *//
+
+    @if $mobile-first == true {
+        width: 100%;                //* [4] *//
+    }
+
+    -webkit-box-sizing: border-box; //* [5] *//
+    -moz-box-sizing: border-box;    //* [5] *//
+    box-sizing: border-box;         //* [5] *//
+
+    @if ($ie-support == true and $ie-box-sizing == true) {
+        *behaviour: $ie-box-sizing-htc-path;
+    }
+
+    @if $use-markup-fix != true {
+        letter-spacing: normal;
+        word-spacing: normal;
+    }
+}
+
+///**
+// * These classes only work for grids using inline-blocks
+// * Floated grids do not have the ability to align elements
+// */
+@if $use-floats == false {
+    ///**
+    // * Reversed grids allow you to structure your source in the opposite order to
+    // * how your rendered layout will appear. Extends `.grid`.
+    // */
+    #{$class-type}grid--rev {
+        direction: rtl;
+        text-align: left;
+
+        > #{$class-type}grid__item {
+            direction: ltr;
+            text-align: left;
+        }
+    }
+
+    ///**
+    // * Align the entire grid to the right. Extends `.grid`.
+    // */
+    #{$class-type}grid--right {
+        text-align: right;
+
+        > #{$class-type}grid__item {
+            text-align: left;
+        }
+    }
+
+    ///**
+    // * Centered grids align grid items centrally without needing to use push or pull
+    // * classes. Extends `.grid`.
+    // */
+    #{$class-type}grid--center {
+        text-align: center;
+
+        > #{$class-type}grid__item {
+            text-align: left;
+        }
+    }
+
+    ///**
+    // * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+    // * `.grid`.
+    // */
+    #{$class-type}grid--middle {
+        > #{$class-type}grid__item {
+            vertical-align: middle;
+        }
+    }
+
+    #{$class-type}grid--bottom {
+        > #{$class-type}grid__item {
+            vertical-align: bottom;
+        }
+    }
+}
+
+///**
+// * Gutterless grids have all the properties of regular grids, minus any spacing.
+// * Extends `.grid`.
+// */
+#{$class-type}grid--full {
+    margin-left: 0;
+
+    > #{$class-type}grid__item {
+        padding-left: 0;
+    }
+}
+
+///**
+// * Create grids with narrower gutters. Extends `.grid`.
+// */
+#{$class-type}grid--narrow {
+    margin-left: -($gutter / 2);
+
+    > #{$class-type}grid__item {
+        padding-left: $gutter / 2;
+    }
+}
+
+///**
+// * Create grids with wider gutters. Extends `.grid`.
+// */
+#{$class-type}grid--wide {
+    margin-left: -($gutter * 2);
+
+    > #{$class-type}grid__item {
+        padding-left: $gutter * 2;
+    }
+}
+
+@mixin percentage ($property, $val, $delta: $ie-percentage-delta) {
+    #{$property}: $val;
+
+    @if ($ie-support == true and $ie-percentages == true) {
+        *#{$property}: $val - $delta;
+    }
+
+    @if ($property == "left" or $property == "right") {
+        @include silent-relative();
+    }
+}
+
+
+
+///*------------------------------------*\
+//    CLASS GENERATOR
+//\*------------------------------------*/
+///**
+// * Create our width classes, prefixed by the specified namespace.
+// */
+@mixin class-generator($property, $namespace: "") {
+    @if $property == "width" {
+        ///**
+        // * Hide
+        // */
+        #{$class-type}#{$namespace}hide         { display: none }
+
+        ///**
+        // * Whole
+        // */
+        #{$class-type}#{$namespace}one-whole         { #{$property}:100%; }
+    }
+
+    ///**
+    // * Halves
+    // */
+    #{$class-type}#{$namespace}one-half          { @include percentage($property, 50%); }
+
+    ///**
+    // * Thirds
+    // */
+    #{$class-type}#{$namespace}one-third         { @include percentage($property, 33.333%); }
+    #{$class-type}#{$namespace}two-thirds        { @include percentage($property, 66.666%); }
+
+    ///**
+    // * Quarters
+    // */
+    #{$class-type}#{$namespace}one-quarter       { @include percentage($property, 25%); }
+    #{$class-type}#{$namespace}two-quarters      { @extend #{$class-type}#{$namespace}one-half; }
+    #{$class-type}#{$namespace}three-quarters    { @include percentage($property, 75%); }
+
+    ///**
+    // * Fifths
+    // */
+    #{$class-type}#{$namespace}one-fifth         { @include percentage($property, 20%); }
+    #{$class-type}#{$namespace}two-fifths        { @include percentage($property, 40%); }
+    #{$class-type}#{$namespace}three-fifths      { @include percentage($property, 60%); }
+    #{$class-type}#{$namespace}four-fifths       { @include percentage($property, 80%); }
+
+    ///**
+    // * Sixths
+    // */
+    #{$class-type}#{$namespace}one-sixth         { @include percentage($property, 16.666%); }
+    #{$class-type}#{$namespace}two-sixths        { @extend #{$class-type}#{$namespace}one-third; }
+    #{$class-type}#{$namespace}three-sixths      { @extend #{$class-type}#{$namespace}one-half; }
+    #{$class-type}#{$namespace}four-sixths       { @extend #{$class-type}#{$namespace}two-thirds; }
+    #{$class-type}#{$namespace}five-sixths       { @include percentage($property, 83.333%); }
+
+    ///**
+    // * Sevenths
+    // */
+    #{$class-type}#{$namespace}one-seventh       { @include percentage($property, 14.285%); }
+    #{$class-type}#{$namespace}two-sevenths      { @include percentage($property, 28.57%); }
+    #{$class-type}#{$namespace}three-sevenths    { @include percentage($property, 42.855%); }
+    #{$class-type}#{$namespace}four-sevenths     { @include percentage($property, 57.14%); }
+    #{$class-type}#{$namespace}five-sevenths     { @include percentage($property, 71.425%); }
+    #{$class-type}#{$namespace}six-sevenths      { @include percentage($property, 85.71%); }
+
+    ///**
+    // * Eighths
+    // */
+    #{$class-type}#{$namespace}one-eighth        { @include percentage($property, 12.5%); }
+    #{$class-type}#{$namespace}two-eighths       { @extend #{$class-type}#{$namespace}one-quarter; }
+    #{$class-type}#{$namespace}three-eighths     { @include percentage($property, 37.5%); }
+    #{$class-type}#{$namespace}four-eighths      { @extend #{$class-type}#{$namespace}one-half; }
+    #{$class-type}#{$namespace}five-eighths      { @include percentage($property, 62.5%); }
+    #{$class-type}#{$namespace}six-eighths       { @extend #{$class-type}#{$namespace}three-quarters; }
+    #{$class-type}#{$namespace}seven-eighths     { @include percentage($property, 87.5%); }
+
+    ///**
+    // * Tenths
+    // */
+    #{$class-type}#{$namespace}one-tenth         { @include percentage($property, 10%); }
+    #{$class-type}#{$namespace}two-tenths        { @extend #{$class-type}#{$namespace}one-fifth; }
+    #{$class-type}#{$namespace}three-tenths      { @include percentage($property, 30%); }
+    #{$class-type}#{$namespace}four-tenths       { @extend #{$class-type}#{$namespace}two-fifths; }
+    #{$class-type}#{$namespace}five-tenths       { @extend #{$class-type}#{$namespace}one-half; }
+    #{$class-type}#{$namespace}six-tenths        { @extend #{$class-type}#{$namespace}three-fifths; }
+    #{$class-type}#{$namespace}seven-tenths      { @include percentage($property, 70%); }
+    #{$class-type}#{$namespace}eight-tenths      { @extend #{$class-type}#{$namespace}four-fifths; }
+    #{$class-type}#{$namespace}nine-tenths       { @include percentage($property, 90%); }
+
+    ///**
+    // * Elevenths
+    // */
+    #{$class-type}#{$namespace}one-eleventh      { @include percentage($property, 9.09%); }
+    #{$class-type}#{$namespace}two-elevenths     { @include percentage($property, 18.18%); }
+    #{$class-type}#{$namespace}three-elevenths   { @include percentage($property, 27.27%); }
+    #{$class-type}#{$namespace}four-elevenths    { @include percentage($property, 36.36%); }
+    #{$class-type}#{$namespace}five-elevenths    { @include percentage($property, 45.45%); }
+    #{$class-type}#{$namespace}six-elevenths     { @include percentage($property, 54.54%); }
+    #{$class-type}#{$namespace}seven-elevenths   { @include percentage($property, 63.63%); }
+    #{$class-type}#{$namespace}eight-elevenths   { @include percentage($property, 72.72%); }
+    #{$class-type}#{$namespace}nine-elevenths    { @include percentage($property, 81.81%); }
+    #{$class-type}#{$namespace}ten-elevenths     { @include percentage($property, 90.90%); }
+
+    ///**
+    // * Twelfths
+    // */
+    #{$class-type}#{$namespace}one-twelfth       { @include percentage($property, 8.333%); }
+    #{$class-type}#{$namespace}two-twelfths      { @extend #{$class-type}#{$namespace}one-sixth; }
+    #{$class-type}#{$namespace}three-twelfths    { @extend #{$class-type}#{$namespace}one-quarter; }
+    #{$class-type}#{$namespace}four-twelfths     { @extend #{$class-type}#{$namespace}one-third; }
+    #{$class-type}#{$namespace}five-twelfths     { @include percentage($property, 41.666%); }
+    #{$class-type}#{$namespace}six-twelfths      { @extend #{$class-type}#{$namespace}one-half; }
+    #{$class-type}#{$namespace}seven-twelfths    { @include percentage($property, 58.333%); }
+    #{$class-type}#{$namespace}eight-twelfths    { @extend #{$class-type}#{$namespace}two-thirds; }
+    #{$class-type}#{$namespace}nine-twelfths     { @extend #{$class-type}#{$namespace}three-quarters; }
+    #{$class-type}#{$namespace}ten-twelfths      { @extend #{$class-type}#{$namespace}five-sixths; }
+    #{$class-type}#{$namespace}eleven-twelfths   { @include percentage($property, 91.666%); }
+}
+
+
+
+///*------------------------------------*\
+//    $WIDTHS
+//\*------------------------------------*/
+///**
+// * Create our width classes, prefixed by the specified namespace.
+// */
+@mixin device-type($namespace:"") {
+    @include class-generator("width", $namespace);
+}
+
+///**
+// * Our regular, non-responsive width classes.
+// */
+@include device-type();
+
+///**
+// * Our responsive classes, if we have enabled them.
+// */
+@if $responsive == true {
+    @each $name in $breakpoint-has-widths {
+        @include grid-media-query($name) {
+            @include device-type('#{$name}--');
+        }
+    }
+}
+
+
+
+///*------------------------------------*\
+//    $PUSH
+//\*------------------------------------*/
+///**
+// * Push classes, to move grid items over to the right by certain amounts.
+// */
+@mixin push-pull-setup($direction, $property, $namespace: "") {
+    @include class-generator ($property, #{$direction}--#{$namespace});
+}
+
+@if $push == true {
+    $property: 'left';
+
+    @if $use-floats {
+        $property: 'margin-left';
+    } @else {
+        $property: 'left';
+        ///**
+        // * Not a particularly great selector, but the DRYest way to do things.
+        // */
+        [class*="push--"] { position:relative; }
+    }
+
+    @include push-pull-setup("push", $property);
+
+    @if $responsive == true {
+        @each $name in $breakpoint-has-push {
+            @include grid-media-query($name) {
+                @include  push-pull-setup("push", $property,'#{$name}--');
+            }
+        }
+    }
+}
+
+@if $pull == true {
+    $property: 'right';
+
+    @if $use-floats {
+        $property: 'margin-right';
+    } @else {
+        $property: 'right';
+        ///**
+        // * Not a particularly great selector, but the DRYest way to do things.
+        // */
+        [class*="pull--"] { position:relative; }
+    }
+
+    @include push-pull-setup("pull", $property);
+
+    @if $responsive == true {
+        @each $name in $breakpoint-has-pull {
+            @include grid-media-query($name) {
+                @include  push-pull-setup("pull", $property,'#{$name}--');
+            }
+        }
+    }
+}
