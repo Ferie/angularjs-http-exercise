@@ -1,0 +1,25 @@
+// Star Rating System
+
+.star-rating {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    > .star {
+        display: inline-block;
+        font-size: rem(28);
+        color: $greyDD;
+        cursor: pointer;
+        text-shadow: rem(1) rem(1) $greyAA;
+        list-style-type: none;
+        padding: 1px;
+
+        &.filled {
+            color: $yellow;
+        }
+    }
+
+    &.readonly .star.filled {
+        color: $yellow;
+    }
+}
