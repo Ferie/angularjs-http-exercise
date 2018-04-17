@@ -1,0 +1,80 @@
+# Environment Variables
+
+.env
+.env.dev
+.env.testing
+.env.staging
+.env.production
+_.env
+_env.js
+_env.test.js
+_env.stage.js
+_env.prod.js
+config.json
+
+
+
+# IDEs and editors
+
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+/nbproject/
+
+
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+
+# node modules and bower components dependencies
+
+/node_modules/
+/bower_components/
+
+
+
+# compiled output
+
+/dist/
+/docs/
+/tmp/
+/out-tsc/
+/documentation/
+/environments/
+/environments/environment.ts
+environment.ts
+
+
+
+# plugins files and folders
+
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn-error.log
+
+
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+
+
+# System Files
+.DS_Store
+Thumbs.db
