@@ -1,0 +1,166 @@
+// Form fields
+
+$field-background-colour: $whiteF8;
+$field-border-colour: $greyD8;
+$field-text-colour: $off-black;
+$field-text-focus-colour: $off-black;
+$invalid-field-colour: $yellow;
+$invalid-text-field-colour: $darker-yellow;
+$field-placeholder-colour: $grey9B;
+
+.formField {
+    margin: 0 0 em(40) 0;
+    padding: 0;
+}
+
+%focusStyling {
+    border-color: $field-text-focus-colour;
+    color: $field-text-focus-colour;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+    @extend %base-font;
+    @include box-sizing;
+    display: inline-block;
+    background-color: $field-background-colour;
+    border: 1px solid $field-border-colour;
+    border-radius: $border-radius;
+    font-size: $base-font-size;
+    color: $field-text-colour;
+    outline: none;
+    padding: em(8);
+    width: 100%;
+}
+
+input[type="text"].inline,
+input[type="tel"].inline,
+input[type="email"].inline,
+input[type="password"].inline,
+input[type="search"].inline,
+input[type="number"].inline,
+input[type="tel"].inline,
+select.inline,
+textarea.inline {
+    width: auto;
+}
+
+select {
+    padding: em(7) em(24) em(7) em(12);
+    -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    @extend %focusStyling;
+    background-color: $field-background-colour;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border-bottom: 1px solid $invalid-field-colour;
+}
+
+.input-errors-container {
+    position: relative;
+}
+
+.input-error {
+    position: absolute;
+    top: em(5);
+    color: $invalid-text-field-colour;
+}
+
+:-webkit-autofill {
+    -webkit-text-fill-color: $field-text-colour;
+    -webkit-box-shadow: 0 0 0 1000px $white inset;
+
+    &:focus {
+        -webkit-text-fill-color: $field-text-focus-colour;
+    }
+}
+
+:-moz-autofill {
+    -moz-text-fill-color: $field-text-colour;
+    -moz-box-shadow: 0 0 0 1000px $white inset;
+
+    &:focus {
+        -webkit-text-fill-color: $field-text-focus-colour;
+    }
+}
+
+:-o-autofill {
+    -o-text-fill-color: $field-text-colour;
+    -o-box-shadow: 0 0 0 1000px $white inset;
+
+    &:focus {
+        -webkit-text-fill-color: $field-text-focus-colour;
+    }
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $field-placeholder-colour;
+}
+
+:-moz-placeholder { /* Firefox 4-18 */
+    color: $field-placeholder-colour;
+    opacity: 1;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: $field-placeholder-colour;
+    opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $field-placeholder-colour;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: $field-placeholder-colour;
+}
+
+/*** Custom arrow on HTML tag select only for IE8, IE9 ***/
+/*** display none for this following element is for all the other browsers ***/
+.selectTagWrapper:before {
+    display: none;
+}
+
+.lt-ie9 .selectTagWrapper,
+.ie9 .selectTagWrapper {
+    position: relative;
+    border: 1px solid $field-border-colour;
+    overflow: hidden;
+    width: 100%;
+}
+
+.lt-ie9 .selectTagWrapper:before,
+.ie9 .selectTagWrapper:before {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 95%;
+    font-size: em(5);
+    width: 100%;
+}
+
+.lt-ie9 .selectTagWrapper > select,
+.ie9 .selectTagWrapper > select {
+    border: none;
+    width: 125%;
+}

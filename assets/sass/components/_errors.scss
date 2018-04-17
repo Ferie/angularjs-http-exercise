@@ -1,0 +1,67 @@
+// Errors
+// - Error bars
+// - Http requests error boxes
+
+.httpRequestError,
+.internetConnectionStatusBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: rem(16);
+    text-align: center;
+    z-index: 100;
+
+    /* Angular-Animation classes and Animate.css animations */
+    &.ng-leave {
+        animation: .2s slideOutUp;
+    }
+
+    &.ng-enter {
+        animation: .5s slideInDown;
+    }
+}
+
+.httpRequestError {
+    background-color: $yellow;
+    color: $off-black;
+}
+
+.internetConnectionStatusBar {
+    background-color: $pink;
+    color: $white;
+}
+
+.httpError {
+    margin: rem(128) auto;
+    max-width: rem(1024);
+}
+
+.httpErrorMessage {
+    width: 100%;
+
+    > .reloadPage {
+        background-color: $off-black;
+    }
+}
+
+@include grid-media-query("xsmall-outwards") {
+    .httpErrorMessage {
+        margin: 0;
+    }
+}
+
+@include grid-media-query("small-outwards") {
+    .httpErrorMessage {
+        width: rem(520);
+    }
+}
+
+@include grid-media-query("medium-outwards") {
+    .httpError {
+        @include svg-icons(spilt_milk_error_img);
+        background-position: right;
+        padding: rem(160) 0;
+    }
+}

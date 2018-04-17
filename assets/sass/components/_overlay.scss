@@ -1,0 +1,16 @@
+// Overlays
+
+.overlay {
+    @include opacity(0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../assets/images/spinning-loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: rem(80);
+    background-color: $white;
+    z-index: 50;
+}

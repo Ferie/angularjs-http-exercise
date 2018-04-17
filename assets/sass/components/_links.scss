@@ -1,0 +1,19 @@
+// Links
+
+$link-colour: $lightBlue;
+
+.link,
+.link:visited {
+    color: $link-colour;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:active {
+        color: scale-color($link-colour, $lightness: -15%);
+    }
+
+    &:hover {
+        color: scale-color($link-colour, $lightness: 15%);
+        text-decoration: underline;
+    }
+}
