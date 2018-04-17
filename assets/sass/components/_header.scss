@@ -1,0 +1,40 @@
+// Header
+
+.headerContainer {
+    @include box-shadow-defined($android-box-shadow-bottom);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    margin: 0;
+    padding: 0 rem(16);
+    height: rem(80);
+}
+
+.headerLogo {
+    display: block;
+    background-image: url('../../assets/images/riccardo-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: rem(130);
+    height: rem(80);
+}
+
+@include grid-media-query("xsmall") {
+    .headerLogo {
+        background-size: rem(160);
+    }
+}
+
+@include grid-media-query("small-outwards") {
+    .headerLogo {
+        display: none;
+    }
+}
+
+@include grid-media-query("medium-outwards") {
+    .headerContainer {
+        padding: 0 rem(32);
+    }
+}
