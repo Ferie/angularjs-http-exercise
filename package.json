@@ -6,7 +6,7 @@
     "main": "index.html",
     "scripts": {
         "start": "node server",
-        "postinstall": "gulp --type production"
+        "postinstall": "gulp production:default"
     },
     "author": {
         "name": "Riccardo Andreatta"
