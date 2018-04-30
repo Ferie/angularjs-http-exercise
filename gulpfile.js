@@ -219,6 +219,25 @@ gulp.task('default', ['clean'], function() {
 
 
 /****************************************************/
+/* ADD HEADER TO MINIMIZED FILES                    */
+/****************************************************/
+
+var header = require('gulp-header');
+var fs = require('fs');
+var pkg = JSON.parse(fs.readFileSync('package.json'));
+var opts = {
+    banner: [
+        '/**',
+        ' * <%= description %> - <%= homepage %>',
+        ' * Version - <%= version %>',
+        ' *',
+        ' * Copyright (c) <%= new Date().getFullYear() %> <%= author.company %>',
+        ' */\n\n'
+    ].join('\n')
+};
+
+
+/****************************************************/
 /* CLOUD PRODUCTION ENVIRONMENT TASKS               */
 /****************************************************/
 
