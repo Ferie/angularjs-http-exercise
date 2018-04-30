@@ -4,13 +4,24 @@
 
 
 
-# AngularJS exercise example
+# AngularJS exercise
 
-This is an exercise taken as an example for the interviews showing how I work with AngularJS and its components, HTTP requests, services and directives.
+This is an exercise for an interview showing how I work with AngularJS and its components, HTTP requests, services and directives.
+
+In the sidebar there is a list of people retrieved using a service. This list is receiving this information via a HTTP request to a JSON file in the data directory (this file could be found in a remote server or requested trough an API).
+
+Clicking on one of those names, the details of the selected person can be seen in the middle of the screen (please note that the images are always different because I am using a lorem ipsum website for images, instead of a proper cdn).
+
+On mobile resolutions, the sidebar is sliding in and out to save space for the main page content. The sidebar can be opened via the "Hamburgher menu" in the header and closed by clicking away of it or via the black cross at the top of the sidebar itself.
+
+
+### Live Demo
+
+[See it in action!](https://riccardo-andreatta-live.herokuapp.com/)
 
 
 
-### Some notes on the web application:
+### Some notes about this web application:
 
 - It is responsive (mobile first)
 - Styles are built using SASS
@@ -43,7 +54,7 @@ The app is served by default at `http://localhost:9050/` but you can change the 
 
 
 
-### Compile the SASS and the JS
+### Compile the SASS and the JS locally
 
 In a new terminal window, run `gulp` to compile the source files.
 
