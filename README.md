@@ -10,6 +10,8 @@ This is an exercise for an interview showing how I work with AngularJS and its c
 
 In the sidebar there is a list of people retrieved using a service. This list is receiving this information via a HTTP request to a JSON file in the data directory (this file could be found in a remote server or requested trough an API).
 
+This list can be ordered alphabetically or by rating (each person has a rating detail). A single person can be eventually searched by the search field in real time.
+
 Clicking on one of those names, the details of the selected person can be seen in the middle of the screen (please note that the images are always different because I am using a lorem ipsum website for images, instead of a proper cdn).
 
 On mobile resolutions, the sidebar is sliding in and out to save space for the main page content. The sidebar can be opened via the "Hamburgher menu" in the header and closed by clicking away of it or via the black cross at the top of the sidebar itself.
