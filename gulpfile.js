@@ -216,3 +216,41 @@ gulp.task('default', ['clean'], function() {
     gutil.log('===========================');
     gulp.start('html', 'sass', 'scripts');
 });
+
+
+/****************************************************/
+/* CLOUD PRODUCTION ENVIRONMENT TASKS               */
+/****************************************************/
+
+// Compile Sass & Minify CSS for cloud production environment
+gulp.task('production:styles', function() {
+    gutil.log('Gulp is compiling the SASS and concatenating and minifying the CSS');
+    return gulp.src(pathSass + '*.scss')
+        .pipe(sass())
+        .pipe(concat(distCssFile))
+        .pipe(cssmin())
+        .pipe(header(opts.banner, pkg))
+        .pipe(gulp.dest(distCssPath));
+});
+
+// Concatenate & Minify JS for cloud production environment
+gulp.task('production:scripts', function() {
+    gutil.log('Gulp is concatenating and minifying the JavaScripts');
+    return gulp.src([
+            jsLibs + '*.js',
+            pathJs + '*.js',
+            pathJs + '**/*.js'
+        ])
+        .pipe(concat(distJsFile))
+        .pipe(uglify({mangle: false}))
+        .pipe(header(opts.banner, pkg))
+        .pipe(gulp.dest(distJsPath));
+});
+
+// Default cloud production task
+gulp.task('production:default', ['clean'], function() {
+    gutil.log('===========================');
+    gutil.log('| Gulp is now building... |');
+    gutil.log('===========================');
+    gulp.start('production:styles', 'production:scripts');
+});
