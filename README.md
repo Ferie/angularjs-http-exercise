@@ -2,7 +2,7 @@
     <img src="http://riccardoandreatta.com/media/image/Logo_Riccardo_Andreatta_giallo_gradient_trasparente.png" width="250" alt="Riccardo logo" />
 </p>
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=filter-and-order-production&root=index.html)
+![Heroku](http://heroku-badge.herokuapp.com/?app=filter-and-order-production&root=index.html)
 
 # AngularJS exercise
 
