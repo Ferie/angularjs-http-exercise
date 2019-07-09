@@ -2,7 +2,7 @@
     <img src="http://riccardoandreatta.com/media/image/Logo_Riccardo_Andreatta_giallo_gradient_trasparente.png" width="250" alt="Riccardo logo" />
 </p>
 
-
+[![Heroku](http://heroku-badge.herokuapp.com/?app=filter-and-order-production&root=index.html)
 
 # AngularJS exercise
 
@@ -19,7 +19,7 @@ On mobile resolutions, the sidebar is sliding in and out to save space for the m
 
 ### Live Demo
 
-[See it in action!](https://riccardo-andreatta-live.herokuapp.com/)
+[See it in action!](https://filter-and-order-production.herokuapp.com/)
 
 
 
